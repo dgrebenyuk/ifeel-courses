@@ -6,8 +6,8 @@
 Расширить класс String методом valid_brackets? для проверки строки на валидность открытых и закрытых скобок а так же их очерёдностью
 
 ```
-# "{(})".valid? => false
-# "{{[]".valid? => false
-# "{[()]}".valid? => true
-# "{{()}[<>](){}}()".valid? => true
+# "{(})".valid_brackets? => false
+# "{{[]".valid_brackets? => false
+# "{[()]}".valid_brackets? => true
+# "{{()}[<>](){}}()".valid_brackets? => true
 ```
