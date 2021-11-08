@@ -1,3 +1,15 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+  resources :users do
+    resource :profile
+    resources :devices, shallow: true
+
+    get :search, on: :collection
+    get :preview, on: :member
+  end
+
+  namespace :admin do
+    root 'home#main'
+  end
+
+  root 'home#main'
 end
