@@ -12,16 +12,9 @@
   </tr>
 
   <% @users.each do |user| %>
-    <tr>
-      <td><%= user.first_name %></td>
-      <td><%= user.last_name %></td>
-      <td><%= user.email %></td>
-      <td><%= user.age %></td>
-      <td><%= user.created_at %></td>
-      <td><%= user.updated_at %></td>
-      <td>
-        <%= link_to 'View', user_path(user) %>
-      </td>
-    </tr>
+    <%= render partial: 'table_row', locals: { user: user } %>
+    <%= render 'table_row', user: user %>
   <% end %>
 </table>
+
+<%= render @users %>
