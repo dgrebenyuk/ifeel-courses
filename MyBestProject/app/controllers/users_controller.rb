@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
-  skip_before_action :verify_authenticity_token
-  before_action :set_user, only: %i[show edit]
+  before_action :set_user, only: %i[show edit update]
   # layout false
 
   def index
@@ -23,19 +22,30 @@ class UsersController < ApplicationController
     end
   end
 
-  def search
-
+  def update
+    if @user.update(user_params)
+      flash[:notice] = 'User was updated'
+      redirect_to action: :show
+    else
+      flash[:alert] = @user.errors.full_messages
+      redirect_to action: :edit
+    end
   end
 
-
-  def preview
-
+  def new
+    @user = User.new(profile: Profile.new)
+    2.times { @user.devices.build }
   end
+
+  def search; end
+
+  def preview; end
 
   private
 
   def user_params
-    params.require(:user).permit(:first_name, :last_name, :email, :age, profile_attributes: [])
+    params.require(:user).permit(:first_name, :last_name, :email, :age, :status, profile_attributes: %i[id address phone_number],
+      devices_attributes: {})
   end
 
   def set_user

@@ -2,12 +2,13 @@
 #
 # Table name: devices
 #
-#  id         :bigint           not null, primary key
-#  address    :string
-#  vendor     :string
-#  created_at :datetime         not null
-#  updated_at :datetime         not null
-#  user_id    :bigint
+#  id            :bigint           not null, primary key
+#  address       :string
+#  vendor        :string
+#  created_at    :datetime         not null
+#  updated_at    :datetime         not null
+#  user_id       :bigint
+#  device_status :integer
 #
 class Device < ApplicationRecord
   belongs_to :user, optional: true

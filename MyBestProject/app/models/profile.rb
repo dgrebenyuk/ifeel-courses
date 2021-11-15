@@ -3,10 +3,11 @@
 # Table name: profiles
 #
 #  id           :bigint           not null, primary key
-#  pnone_number :string
+#  phone_number :string
 #  user_id      :bigint
 #  created_at   :datetime         not null
 #  updated_at   :datetime         not null
+#  address      :string
 #
 class Profile < ApplicationRecord
   belongs_to :user

@@ -9,6 +9,7 @@
 #  age        :integer
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
+#  status     :integer          default("normal")
 #
 class User < ApplicationRecord
   ADULT_AGE = 18
@@ -25,6 +26,10 @@ class User < ApplicationRecord
   has_many :groups, through: :groups_users
 
   validates :email, presence: true, uniqueness: true
+
+  enum status: { normal: 0, premium: 1, gold: 2 }
+  accepts_nested_attributes_for :profile
+  accepts_nested_attributes_for :devices, allow_destroy: true
 
   private
 

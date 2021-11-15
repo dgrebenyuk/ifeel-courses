@@ -12,9 +12,13 @@
   </tr>
 
   <% @users.each do |user| %>
-    <%= render partial: 'table_row', locals: { user: user } %>
+    <%# <%= render partial: 'table_row', locals: { user: user } %>
     <%= render 'table_row', user: user %>
   <% end %>
 </table>
+
+<br/>
+
+<%= link_to 'Create User', new_user_path %>
 
 <%= render @users %>

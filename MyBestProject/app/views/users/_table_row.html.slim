@@ -5,4 +5,7 @@ tr
   td = user.age
   td = user.created_at
   td = user.updated_at
-  td = link_to 'View', user_path(user)
+  td
+    = link_to 'View', user_path(user)
+    | &nbsp;
+    = link_to 'Edit', edit_user_path(user)
