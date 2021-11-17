@@ -2,3 +2,9 @@
 
 <h2><%= @user.first_name %> <%= @user.last_name %></h2>
 <%= link_to 'View Profile', user_profile_path(@user) %>
+
+<% content_for :header_email do %>
+  <h2>
+    <%= @user.email %>
+  </h2>
+<% end %>
