@@ -31,6 +31,9 @@ class User < ApplicationRecord
   accepts_nested_attributes_for :profile
   accepts_nested_attributes_for :devices, allow_destroy: true
 
+  delegate :phone_number, to: :profile, allow_nil: true #, prefix: true
+  # delegate :city, to: :profile, allow_nil: true
+
   private
 
   def set_age

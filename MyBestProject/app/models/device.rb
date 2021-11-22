@@ -11,7 +11,7 @@
 #  device_status :integer
 #
 class Device < ApplicationRecord
-  belongs_to :user, optional: true
+  belongs_to :user, optional: true, counter_cache: true
   scope :tp_links, -> { where(vendor: 'TP-Link') }
 
   # validates :address, uniqueness: true

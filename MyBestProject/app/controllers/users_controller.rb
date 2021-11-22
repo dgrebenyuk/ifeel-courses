@@ -3,7 +3,10 @@ class UsersController < ApplicationController
   # layout false
 
   def index
-    @users = User.all
+    @users = User.all.includes(:profile)
+    @users = @users.where('age > ?', params[:age]) if params[:age]
+    @users = @users.where('first_name LIKE ?', "%#{params[:name]}%") if params[:name]
+    # @users = @users.where(User.arel_table[:first_name].matches(params[:name])) if params[:name]
 
     respond_to do |format|
       format.html
