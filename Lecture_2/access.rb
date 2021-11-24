@@ -16,7 +16,7 @@ class Child < Parent
     puts self.name rescue puts 'NoMethodError'
 
     # Explicit receiver
-    puts Parent.new(:name) rescue puts 'NoMethodError'
+    puts Parent.new.name rescue puts 'NoMethodError'
 
   end
 end
