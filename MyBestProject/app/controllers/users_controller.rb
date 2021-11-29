@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update]
+  before_action :set_user, only: %i[show edit update destroy]
   # layout false
 
   def index
@@ -15,13 +15,17 @@ class UsersController < ApplicationController
   end
 
   def create
-    @user = User.new(user_params)
+    @user = User.create(user_params)
 
-    if @user.save
-      redirect_to action: :index
-    else
-      # head :unprocessable_entity
-      render json: @user.errors
+    respond_to do |format|
+      format.js
+      format.html do
+        if @user.errors
+          render json: @user.errors
+        else
+          redirect_to action: :index
+        end
+      end
     end
   end
 
@@ -38,6 +42,12 @@ class UsersController < ApplicationController
   def new
     @user = User.new(profile: Profile.new)
     2.times { @user.devices.build }
+  end
+
+  def destroy
+    if @user.destroy
+      redirect_to users_path
+    end
   end
 
   def search; end

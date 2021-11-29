@@ -1,39 +1,39 @@
-= render 'shared/errors'
-= form_with model: @user do |form|
-  = form.label :first_name, 'Your First Name', style: 'color: red;', for: '', data: { attr: 'value' }
-  | &nbsp;
-  = form.text_field :first_name
-  br
-  br
-  = form.label :last_name
-  | &nbsp;
-  = form.text_field :last_name
-  br
-  br
-  = form.label :email
-  | &nbsp;
-  = form.email_field :email
-  br
-  br
-  = form.label :age
-  | &nbsp;
-  = form.number_field :age
-  br
-  br
-  = form.label :status
-  | &nbsp;
-  = form.select :status, User.statuses.keys
-  br
-  br
-  = form.fields_for :profile do |profile_form|
-    = profile_form.text_field :address, placeholder: 'Enter Your Address'
-    = profile_form.telephone_field :phone_number, placeholder: 'Enter Your Phone'
-  br
-  br
-  = form.fields_for :devices do |devices_form|
-    = devices_form.text_field :address, placeholder: 'IP Address'
-    = devices_form.text_field :vendor, placeholder: 'Vendor'
-    = devices_form.check_box :_destroy
-    br
+.row
+  .col-md-6.offset-md-3
+    .errors
+    = form_with model: @user, local: false do |form|
+      .mb-3
+        = form.label :first_name, 'Your First Name', class: 'form-label'
+        = form.text_field :first_name, class: 'form-control'
 
-  = form.submit
+      .mb-3
+        = form.label :last_name, class: 'form-label'
+        = form.text_field :last_name, class: 'form-control'
+      = form.label :email
+      | &nbsp;
+      = form.email_field :email
+      br
+      br
+      = form.label :age
+      | &nbsp;
+      = form.number_field :age
+      br
+      br
+      = form.label :status
+      | &nbsp;
+      = form.select :status, User.statuses.keys
+      br
+      br
+      = form.fields_for :profile do |profile_form|
+        = profile_form.text_field :address, placeholder: 'Enter Your Address'
+        = profile_form.telephone_field :phone_number, placeholder: 'Enter Your Phone'
+      br
+      br
+      = form.fields_for :devices do |devices_form|
+        = devices_form.text_field :address, placeholder: 'IP Address'
+        = devices_form.text_field :vendor, placeholder: 'Vendor'
+        = devices_form.check_box :_destroy
+        br
+
+      .mt-3
+        = form.submit class: 'btn btn-primary'

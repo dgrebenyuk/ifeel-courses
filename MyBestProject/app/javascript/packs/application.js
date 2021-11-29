@@ -6,7 +6,12 @@
 import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
+import $ from "jquery"
 import "channels"
+import "bootstrap"
+import "./users"
+
+global.$ = jQuery
 
 Rails.start()
 Turbolinks.start()
