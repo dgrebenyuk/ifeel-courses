@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: %i[show edit update destroy]
-  # layout false
+  layout false, only: %i[new edit]
 
   def index
     @users = User.all.includes(:profile)
@@ -30,12 +30,21 @@ class UsersController < ApplicationController
   end
 
   def update
-    if @user.update(user_params)
-      flash[:notice] = 'User was updated'
-      redirect_to action: :show
-    else
-      flash[:alert] = @user.errors.full_messages
-      redirect_to action: :edit
+    respond_to do |format|
+      if @user.update(user_params)
+        format.js do
+          response.set_header('Content-Type', 'text/plain')
+          render partial: 'table_row', locals: { user: @user }
+        end
+
+        format.html do
+          flash[:notice] = 'User was updated'
+          redirect_to action: :show
+        end
+      else
+        flash[:alert] = @user.errors.full_messages
+        redirect_to action: :edit
+      end
     end
   end
 

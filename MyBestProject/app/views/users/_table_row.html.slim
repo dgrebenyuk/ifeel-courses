@@ -1,4 +1,4 @@
-tr
+tr id="row-#{user.id}"
   td = user.id
   td = user.first_name
   td = user.last_name
@@ -11,6 +11,6 @@ tr
   td
     = link_to 'View', user_path(user)
     | &nbsp;
-    = link_to 'Edit', edit_user_path(user)
+    = link_to 'Edit', edit_user_path(user), class: 'modal-toggle'
     | &nbsp;
     = link_to 'Delete', user_path(user), method: :delete, remote: true, data: { confirm: 'Are you sure?' }

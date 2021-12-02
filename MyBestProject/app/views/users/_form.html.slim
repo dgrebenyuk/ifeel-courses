@@ -1,7 +1,7 @@
 .row
   .col-md-6.offset-md-3
     .errors
-    = form_with model: @user, local: false do |form|
+    = form_with model: @user, local: false, data: { id: @user.id } do |form|
       .mb-3
         = form.label :first_name, 'Your First Name', class: 'form-label'
         = form.text_field :first_name, class: 'form-control'
@@ -9,31 +9,36 @@
       .mb-3
         = form.label :last_name, class: 'form-label'
         = form.text_field :last_name, class: 'form-control'
-      = form.label :email
-      | &nbsp;
-      = form.email_field :email
-      br
-      br
-      = form.label :age
-      | &nbsp;
-      = form.number_field :age
-      br
-      br
-      = form.label :status
-      | &nbsp;
-      = form.select :status, User.statuses.keys
-      br
-      br
-      = form.fields_for :profile do |profile_form|
-        = profile_form.text_field :address, placeholder: 'Enter Your Address'
-        = profile_form.telephone_field :phone_number, placeholder: 'Enter Your Phone'
-      br
-      br
-      = form.fields_for :devices do |devices_form|
-        = devices_form.text_field :address, placeholder: 'IP Address'
-        = devices_form.text_field :vendor, placeholder: 'Vendor'
-        = devices_form.check_box :_destroy
-        br
+
+      .mb-3
+        = form.label :email, class: 'form-label'
+        = form.email_field :email, class: 'form-control'
+
+      .mb-3
+        = form.label :age, class: 'form-label'
+        = form.number_field :age, class: 'form-control'
+
+      .mb-3
+        = form.label :status, class: 'form-label'
+        = form.select :status, User.statuses.keys, {}, class: 'form-select'
+
+      .mb-3
+        = form.fields_for :profile do |profile_form|
+          .row
+            .col-md-6
+              = profile_form.text_field :address, placeholder: 'Enter Your Address', class: 'form-control'
+            .col-md-6
+              = profile_form.telephone_field :phone_number, placeholder: 'Enter Your Phone', class: 'form-control'
+
+      .mb-3
+        = form.fields_for :devices do |devices_form|
+          .row.mb-3
+            .col-md-4
+              = devices_form.text_field :address, placeholder: 'IP Address', class: 'form-control'
+            .col-md-4
+              = devices_form.text_field :vendor, placeholder: 'Vendor', class: 'form-control'
+            .col-md-4
+              = devices_form.check_box :_destroy, class: 'form-check-input'
 
       .mt-3
         = form.submit class: 'btn btn-primary'
