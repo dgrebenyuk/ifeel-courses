@@ -50,7 +50,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new(profile: Profile.new)
-    2.times { @user.devices.build }
+    # 2.times { @user.devices.build }
   end
 
   def destroy

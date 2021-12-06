@@ -1,7 +1,7 @@
 import { Modal } from 'bootstrap'
 
 console.log('Hello')
-$(() => {
+$(document).on('turbolinks:load', () => {
   var userModal = new Modal($('#user-modal'))
 
   $('.modal-toggle').on('click', (event) => {

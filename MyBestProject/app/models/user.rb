@@ -14,6 +14,7 @@
 class User < ApplicationRecord
   ADULT_AGE = 18
   before_create :set_age
+  after_create :send_email
 
   default_scope -> { order(id: :desc) }
   scope :adults, ->(age_param) { where('age >= ?', age_param).order(age: :desc) }
@@ -38,5 +39,9 @@ class User < ApplicationRecord
 
   def set_age
     self.age = (16..60).to_a.sample
+  end
+
+  def send_email
+    UserMailer.with(user_id: id).welcome_user.deliver
   end
 end
