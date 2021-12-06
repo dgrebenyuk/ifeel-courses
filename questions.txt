@@ -1,0 +1,46 @@
+Что вы можете сказать про язык Ruby?
+Какие есть типы переменных в Ruby?
+Какие бывают методы по пренадлежности? Как они описываются?
+Что такое Bang! методы?
+AJAX
+Как работают модификаторы доступа (private, public, protected)?
+В чём разница между модулем и классом?
+Что такое миксины и зачем они?
+Что такое include и extend и в чем разница между ними?
+Что такое self?
+DRY
+Как работает lookup методов в Ruby?
+Как с одного модуля заюзать и методы объекта и методы класса?
+STI
+Какие типы HTTP запросов вы знаете и в чём между ними разница?
+Что такое closure и как этот механизм реализован в Ruby?
+Какая разница между proc и lambda?
+DHH
+Что такое Enumerable?
+What is the difference between find() and find_by()?
+What is the difference between member route and collection route?
+What is the N+1 query problem and how can one remove it?
+SOLID
+Could you explain polymorphic associations?
+What’s the difference between redirect_to and render?
+Explain MVC pattern.
+What are Active Record callbacks and which ones are you familiar with?
+Can we use multiple renders in controller?
+What’s the difference between destroy and delete?
+KISS
+What’s the difference between new, save and create? Also between save and save! ?
+What’s the difference between nil?, empty?, blank? and present? methods?
+Как реализовать many-to-many ассоциацию в rails?
+Какой ответ на «Главный вопрос жизни, вселенной и всего такого»?
+Что такое флаг -f для команды git push?
+YAGNI
+Чем отличаются map, map!, each?
+Что такое gem? Что такое RubyGems?
+Что такое Bundler и зачем он?
+Что такое scope и в чём их отличие от методов класса?
+ORM
+Как оправить GET запрос с параметрами?
+Что такое resource и resources в роутах?
+Что такое CRUD action?
+Что такое strong parameters? И в чём разнича между require, permit и permit!
+Что такое Cron?
