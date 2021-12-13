@@ -8,6 +8,7 @@ gem 'jbuilder', '~> 2.7'
 gem 'pg'
 gem 'puma', '~> 5.0'
 gem 'rails', '~> 6.1.4', '>= 6.1.4.1'
+gem 'rexml'
 gem 'sass-rails', '>= 6'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
@@ -17,8 +18,10 @@ gem 'whenever'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-  gem 'pry-rails'
+  gem 'factory_bot_rails', '~> 6.2'
   gem 'faker'
+  gem 'pry-rails'
+  gem 'rspec-rails', '~> 5.0'
 end
 
 group :development do
