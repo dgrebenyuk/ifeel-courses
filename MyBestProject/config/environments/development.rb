@@ -64,6 +64,10 @@ Rails.application.configure do
   # Suppress logger output for asset requests.
   config.assets.quiet = true
 
+  # Use a real queuing backend for Active Job (and separate queues per environment).
+  config.active_job.queue_adapter = :sidekiq
+  # config.active_job.queue_name_prefix = "MyBestProject_production"
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 

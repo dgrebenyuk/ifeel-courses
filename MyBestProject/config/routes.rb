@@ -11,5 +11,11 @@ Rails.application.routes.draw do
     root 'home#main'
   end
 
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
+  # authenticated :user, lambda { |u| u.has_role? :admin } do
+  # end
+
   root 'home#main'
 end

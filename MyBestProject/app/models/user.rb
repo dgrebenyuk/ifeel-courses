@@ -42,6 +42,6 @@ class User < ApplicationRecord
   end
 
   def send_email
-    UserMailer.with(user_id: id).welcome_user.deliver
+    UserMailer.with(user_id: id).welcome_user.deliver_later
   end
 end
