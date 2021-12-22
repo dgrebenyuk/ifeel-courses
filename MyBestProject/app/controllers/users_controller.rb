@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: %i[show edit update destroy]
+  before_action :set_user, only: %i[show edit update destroy change_balance]
   layout false, only: %i[new edit]
 
   def index
@@ -62,6 +62,15 @@ class UsersController < ApplicationController
   def search; end
 
   def preview; end
+
+  def change_balance
+    puts @user.balance
+    puts '============'
+    # @user.with_lock do
+    @user.balance -= params[:credit].to_i
+    @user.save
+    # end
+  end
 
   private
 

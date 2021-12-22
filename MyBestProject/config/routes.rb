@@ -5,10 +5,17 @@ Rails.application.routes.draw do
 
     get :search, on: :collection
     get :preview, on: :member
+    patch :change_balance, on: :member
   end
 
   namespace :admin do
     root 'home#main'
+  end
+
+  namespace :api do
+    namespace :v1 do
+      resources :users
+    end
   end
 
   require 'sidekiq/web'

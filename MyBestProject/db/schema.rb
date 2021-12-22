@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_11_22_171011) do
+ActiveRecord::Schema.define(version: 2021_12_22_164817) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,8 @@ ActiveRecord::Schema.define(version: 2021_11_22_171011) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "status", default: 0
     t.integer "devices_count"
+    t.decimal "balance", default: "0.0"
+    t.integer "lock_version", default: 0
   end
 
   add_foreign_key "profiles", "users"

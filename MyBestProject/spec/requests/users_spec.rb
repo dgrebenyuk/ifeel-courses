@@ -48,4 +48,17 @@ RSpec.describe 'Users', type: :request do
       expect { post users_path(params: params) }.to change(User, :count).by(1)
     end
   end
+
+  describe 'Change balance' do
+    let!(:user) { create(:user, balance: 100) }
+
+    before do
+      # ActiveRecord::Base.logger = Logger.new(STDOUT) if defined?(ActiveRecord::Base)
+      threads = []
+      2.times { threads << Thread.new { patch change_balance_user_path(user, params: { credit: 20 }) } }
+      threads.each(&:join)
+    end
+
+    it { expect(user.reload.balance).to eq(60) }
+  end
 end
